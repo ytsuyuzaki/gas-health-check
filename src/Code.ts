@@ -1,5 +1,5 @@
 
-function setScheduling() {
+export function setScheduling() {
   const triggers = ScriptApp.getProjectTriggers();
   triggers.forEach(t => ScriptApp.deleteTrigger(t))
   ScriptApp.newTrigger("execution")
@@ -8,9 +8,8 @@ function setScheduling() {
     .create();
 }
 
-const scriptProperties = PropertiesService.getScriptProperties()
-
-function execution() {
+export function execution() {
+  const scriptProperties = PropertiesService.getScriptProperties()
   const properties: any = scriptProperties.getProperties()
   for (let key in properties) {
     if (/^http/.test(key)) {
@@ -19,7 +18,8 @@ function execution() {
   }
 }
 
-const fetchUrl = (url: string, statusPreCode: string) => {
+export const fetchUrl = (url: string, statusPreCode: string) => {
+  const scriptProperties = PropertiesService.getScriptProperties()
   let statusCode: number = 0;
   try {
     const response = UrlFetchApp.fetch(url, {muteHttpExceptions: true});
@@ -34,10 +34,11 @@ const fetchUrl = (url: string, statusPreCode: string) => {
   }
 }
 
-const sendMail = (url: string, statusCode: number) => {
+export const sendMail = (url: string, statusCode: number) => {
+  const scriptProperties = PropertiesService.getScriptProperties()
   const state = (/^2/.test(String(statusCode))) ? "OK" : "ALARM";
-  const to = scriptProperties.getProperty("to")
-  const subject = "[gas-health-check] [" + state + "] " + statusCode + ": " + url ;
+  const to = scriptProperties.getProperty("to") ?? ''
+  const subject = "[gas-health-check] [" + state + "] " + statusCode + ": " + url;
   const body = state + "\n" + statusCode + "\n" + url;
 
   MailApp.sendEmail(to, subject, body);
