@@ -10,7 +10,7 @@
     "build": "tsc",
     "push": "npm run build && clasp push",
     "run": "clasp run setScheduling",
-    "test": "jest"
+    "test": "vitest run"
   },
   "author": "soramugi",
   "license": "ISC",
@@ -19,9 +19,12 @@
   },
   "devDependencies": {
     "@types/google-apps-script": "^1.0.100",
-    "@types/jest": "^29.5.14",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.4.9",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.9"
+  },
+  "overrides": {
+    "googleapis": "^173.0.0",
+    "googleapis-common": "^8.0.2",
+    "uuid": "^11.1.1"
   }
 }
