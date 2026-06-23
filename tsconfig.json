@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "module": "system",
+    "lib": ["es2017"],
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
+    "types": ["google-apps-script"],
     "outFile": "build/main.js"
   },
   "include": [

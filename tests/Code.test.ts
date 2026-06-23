@@ -1,40 +1,41 @@
 import { setScheduling, execution, fetchUrl, sendMail } from '../src/Code';
+import { describe, expect, it, vi } from 'vitest';
 
 // ---- helpers to reset mocks between tests ----
 
 function resetMocks() {
   const triggerBuilder = {
-    timeBased: jest.fn().mockReturnThis(),
-    everyMinutes: jest.fn().mockReturnThis(),
-    create: jest.fn(),
+    timeBased: vi.fn().mockReturnThis(),
+    everyMinutes: vi.fn().mockReturnThis(),
+    create: vi.fn(),
   };
 
   const scriptProps = {
-    getProperties: jest.fn().mockReturnValue({}),
-    getProperty: jest.fn().mockReturnValue(null),
-    setProperty: jest.fn(),
+    getProperties: vi.fn().mockReturnValue({}),
+    getProperty: vi.fn().mockReturnValue(null),
+    setProperty: vi.fn(),
   };
 
   const response = {
-    getResponseCode: jest.fn().mockReturnValue(200),
+    getResponseCode: vi.fn().mockReturnValue(200),
   };
 
   (global as any).ScriptApp = {
-    getProjectTriggers: jest.fn().mockReturnValue([]),
-    deleteTrigger: jest.fn(),
-    newTrigger: jest.fn().mockReturnValue(triggerBuilder),
+    getProjectTriggers: vi.fn().mockReturnValue([]),
+    deleteTrigger: vi.fn(),
+    newTrigger: vi.fn().mockReturnValue(triggerBuilder),
   };
 
   (global as any).PropertiesService = {
-    getScriptProperties: jest.fn().mockReturnValue(scriptProps),
+    getScriptProperties: vi.fn().mockReturnValue(scriptProps),
   };
 
   (global as any).UrlFetchApp = {
-    fetch: jest.fn().mockReturnValue(response),
+    fetch: vi.fn().mockReturnValue(response),
   };
 
   (global as any).MailApp = {
-    sendEmail: jest.fn(),
+    sendEmail: vi.fn(),
   };
 
   return { triggerBuilder, scriptProps, response };
