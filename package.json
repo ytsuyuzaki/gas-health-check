@@ -25,6 +25,7 @@
   "overrides": {
     "googleapis": "^173.0.0",
     "googleapis-common": "^8.0.2",
-    "uuid": "^11.1.1"
+    "uuid": "^11.1.1",
+    "gaxios": "^7.3.0"
   }
 }
