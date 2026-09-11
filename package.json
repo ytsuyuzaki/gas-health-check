@@ -20,7 +20,7 @@
   "devDependencies": {
     "@types/google-apps-script": "^1.0.100",
     "typescript": "^5.9.3",
-    "vitest": "^4.1.9"
+    "vitest": "^5.0.0"
   },
   "overrides": {
     "googleapis": "^173.0.0",
