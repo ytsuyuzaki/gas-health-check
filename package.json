@@ -26,6 +26,10 @@
     "googleapis": "^173.0.0",
     "googleapis-common": "^8.0.2",
     "uuid": "^11.1.1",
-    "gaxios": "^7.3.0"
+    "gaxios": "^7.3.0",
+    "body-parser": "^2.4.0",
+    "ip-address": "^10.7.5",
+    "qs": "^6.17.0",
+    "zod": "^4.6.7"
   }
 }
